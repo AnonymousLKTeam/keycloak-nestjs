@@ -1,6 +1,6 @@
 {
   "name": "keycloak-nestjs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "keycloak-nodejs-connect module for Nest",
   "author": "Sameera Piyadigamage <s@anonymous.lk>",
   "contributors": [],

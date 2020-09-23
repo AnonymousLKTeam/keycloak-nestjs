@@ -26,4 +26,10 @@ export interface KeycloakConnectOptions {
    * Keycloak formatted public-key.
    */
   realmPublicKey?: string;
+
+  bearerOnly?: boolean;
+
+  verifyTokenAudience?: boolean;
+
+  minTimeBetweenJwksRequests?: number;
 }
