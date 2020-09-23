@@ -22,4 +22,8 @@ export interface KeycloakConnectOptions {
    * Keycloak cookie key.
    */
   cookieKey?: string;
+  /**
+   * Keycloak formatted public-key.
+   */
+  realmPublicKey?: string;
 }

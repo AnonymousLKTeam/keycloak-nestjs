@@ -1,4 +1,4 @@
-# Nest Keycloak Connect
+# KeyCloak Connect for NestJS - A fork from [Nest Keycloak Connect]https://github.com/ferrerojosh/nest-keycloak-connect
 
 ![License](https://badgen.net/npm/license/nest-keycloak-connect)
 [![Package Version](https://badgen.net/npm/v/nest-keycloak-connect)](https://www.npmjs.com/package/nest-keycloak-connect)
@@ -51,6 +51,9 @@ import {
       secret: 'secret',
       // optional if you want to retrieve JWT from cookie
       cookieKey: 'KEYCLOAK_JWT',
+      // available on Realm Settings -> Keys -> RS256. then click "Public Key" button ;-)
+      realmPublicKey:
+        'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1xmKwJPiK11u1gyQ7F+um5Hw84s3PQLPgvpK/gUyk1hpOYrzdSg/NtKIRnANy7XsQpU5LhATQg8EF8Jh8Niu2NVtdbLQfBh4K1g8INdHVOxdRSDD2LSpqDaA3rkywbjgnWpGs/maYGFagphPtOmxLsW79MdrXnokn3jHoo8hB4vIRVt+XOJjYeMa0xPbMWyG/EPiujjIs/+9RW/ZDnwpjChtBGwuSyIzQoABHf334Q6AZVVVbH5pgu28CwtCOa04CF0sHa4+wE9a8TaBf4eMsHwyaWwLY5QhRihpWcCcKt9oRwJOBsDdr5EiPq1XVFxx256+hihYihAR6VeF4X8MkwIDAQAB',
     }),
   ],
   providers: [
@@ -89,7 +92,14 @@ export class AppModule {}
 In your controllers, simply do:
 
 ```typescript
-import { Resource, Roles, Scopes, AllowAnyRole, Unprotected, Public } from 'nest-keycloak-connect';
+import {
+  Resource,
+  Roles,
+  Scopes,
+  AllowAnyRole,
+  Unprotected,
+  Public,
+} from 'nest-keycloak-connect';
 import { Controller, Get, Delete, Put, Post, Param } from '@nestjs/common';
 import { Product } from './product';
 import { ProductService } from './product.service';
