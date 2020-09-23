@@ -32,4 +32,6 @@ export interface KeycloakConnectOptions {
   verifyTokenAudience?: boolean;
 
   minTimeBetweenJwksRequests?: number;
+
+  'ssl-required'?: string;
 }
