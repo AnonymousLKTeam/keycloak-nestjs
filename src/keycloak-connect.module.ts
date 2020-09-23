@@ -5,6 +5,8 @@ import { KeycloakConnectModuleAsyncOptions } from './interface/keycloak-connect-
 import { KeycloakConnectOptionsFactory } from './interface/keycloak-connect-options-factory.interface';
 import { KeycloakConnectOptions } from './interface/keycloak-connect-options.interface';
 
+import * as session from 'express-session';
+
 export * from './decorators/resource.decorator';
 export * from './decorators/scopes.decorator';
 export * from './decorators/roles.decorator';
@@ -81,7 +83,11 @@ export class KeycloakConnectModule {
     provide: KEYCLOAK_INSTANCE,
     useFactory: (opts: KeycloakConnectOptions) => {
       const keycloakOpts: any = opts;
-      const keycloak: any = new KeycloakConnect.default({}, keycloakOpts);
+      const memoryStore = new session.MemoryStore();
+      const keycloak: any = new KeycloakConnect.default(
+        { store: memoryStore },
+        keycloakOpts,
+      );
 
       // Access denied is called, add a flag to request so our resource guard knows
       keycloak.accessDenied = (req: any, res: any, next: any) => {
